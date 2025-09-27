@@ -65,7 +65,7 @@ const HeroSection = () => {
             <Button variant="secondary" size="sm" className="flex-1">
               Ver todas
             </Button>
-            <Button variant="outline" size="sm" className="border-accent-foreground text-accent-foreground hover:bg-accent-foreground hover:text-accent">
+            <Button variant="outline" size="sm" className="border-accent-foreground text-foreground hover:bg-accent-foreground hover:text-accent">
               Ver TV
             </Button>
           </div>
