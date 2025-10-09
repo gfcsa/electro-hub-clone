@@ -18,7 +18,7 @@ const ProposalForm = () => {
     message: ""
   });
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     
     // Validação básica
@@ -31,22 +31,39 @@ const ProposalForm = () => {
       return;
     }
 
-    // Aqui você pode integrar com backend/email service
-    console.log("Proposta enviada:", formData);
-    
-    toast({
-      title: "Proposta Enviada!",
-      description: "Entraremos em contacto em breve.",
-    });
+    try {
+      const response = await fetch("https://hook.eu2.make.com/kv3t8kcfmkrgqjbwxle36f0paw7s29m2", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(formData),
+      });
 
-    // Reset form
-    setFormData({
-      name: "",
-      email: "",
-      phone: "",
-      category: "",
-      message: ""
-    });
+      if (response.ok) {
+        toast({
+          title: "Proposta Enviada!",
+          description: "Entraremos em contacto em breve.",
+        });
+
+        // Reset form
+        setFormData({
+          name: "",
+          email: "",
+          phone: "",
+          category: "",
+          message: ""
+        });
+      } else {
+        throw new Error("Erro ao enviar proposta");
+      }
+    } catch (error) {
+      toast({
+        title: "Erro",
+        description: "Não foi possível enviar a proposta. Tente novamente.",
+        variant: "destructive"
+      });
+    }
   };
 
   return (
