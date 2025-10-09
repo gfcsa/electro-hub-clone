@@ -2,6 +2,7 @@ import Header from "@/components/Header";
 import HeroSection from "@/components/HeroSection";
 import ProductFilters from "@/components/ProductFilters";
 import ProductCard from "@/components/ProductCard";
+import ProposalForm from "@/components/ProposalForm";
 import { Button } from "@/components/ui/button";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 
@@ -67,6 +68,13 @@ const Index = () => {
       
       <main className="max-w-7xl mx-auto px-4 py-6">
         <HeroSection />
+        
+        {/* Proposal Form Section */}
+        <section className="my-12">
+          <div className="max-w-3xl mx-auto">
+            <ProposalForm />
+          </div>
+        </section>
         
         <div className="grid grid-cols-1 lg:grid-cols-4 gap-6">
           {/* Filters Sidebar */}
